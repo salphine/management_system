@@ -2,5 +2,5 @@ streamlit==1.28.0
 pandas==2.2.0
 numpy==1.26.4
 streamlit-option-menu==0.3.6
-plotly==5.17.0
+plotly==5.20.0
 reportlab==4.1.0

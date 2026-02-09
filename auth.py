@@ -1,11 +1,10 @@
 import streamlit as st
 import hashlib
-
+from database import Database
 
 class Authentication:
     def __init__(self):
-    from database import Database
-    self.db = Database()
+        self.db = Database()
         
     def hash_password(self, password):
         """Simple password hashing"""
@@ -40,9 +39,8 @@ class Authentication:
             st.error(f"Database error: {e}")
             return {'authenticated': False, 'error': 'System error'}
         
-        # For demo purposes, check default credentials
+        # Default credentials for admin/testing
         if username == 'admin' and password == 'admin123':
-            # Store in session state for demo user too
             st.session_state.authenticated = True
             st.session_state.username = 'admin'
             st.session_state.role = 'admin'
@@ -66,7 +64,6 @@ class Authentication:
     
     def check_auth(self):
         """Check if user is authenticated"""
-        # CORRECTED: Properly access session state
         return st.session_state.get('authenticated', False)
     
     def require_auth(self):
@@ -74,5 +71,3 @@ class Authentication:
         if not self.check_auth():
             st.error("Please login to access this page")
             st.stop()
-
-

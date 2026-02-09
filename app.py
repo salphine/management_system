@@ -290,7 +290,7 @@ def show_dashboard():
         fig = px.pie(status_data, values='Count', names='Status', 
                     color_discrete_sequence=['#10B981', '#F59E0B', '#EF4444'])
         fig.update_traces(textposition='inside', textinfo='percent+label')
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
     
     with col2:
         st.markdown("### 📊 Top Products by Stock Value")
@@ -307,7 +307,7 @@ def show_dashboard():
                     color='Value',
                     color_continuous_scale='Viridis')
         fig.update_layout(xaxis_title="", yaxis_title="Stock Value (KES)")
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
     
     # Low stock alerts
     st.markdown("### ⚠️ Low Stock Alerts")
@@ -809,7 +809,7 @@ def show_inventory():
                     x='Category', y='value', color='variable',
                     color_discrete_map={'Adequate': '#10B981', 'Low': '#F59E0B', 'Critical': '#EF4444'},
                     title="Stock Status by Category")
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
     
     with tab2:
         st.markdown("### Add New Product")
@@ -1024,7 +1024,7 @@ def show_reports():
             fig = px.pie(category_sales, values='total', names='category',
                         color_discrete_sequence=px.colors.qualitative.Set3)
             fig.update_traces(textposition='inside', textinfo='percent+label')
-            st.plotly_chart(fig, width="stretch")
+            st.plotly_chart(fig, use_container_width=True)
         
         with col2:
             st.markdown("### Daily Sales Trend")
@@ -1034,7 +1034,7 @@ def show_reports():
                          title="Sales Over Time",
                          markers=True)
             fig.update_layout(xaxis_title="Date", yaxis_title="Total Sales (KES)")
-            st.plotly_chart(fig, width="stretch")
+            st.plotly_chart(fig, use_container_width=True)
         
         # Payment method distribution
         st.markdown("### Payment Methods Distribution")
@@ -1044,7 +1044,7 @@ def show_reports():
                     color='payment_method',
                     title="Sales by Payment Method")
         fig.update_layout(xaxis_title="Payment Method", yaxis_title="Total Sales (KES)")
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
     
     with tab3:
         st.markdown("### Detailed Sales Data")
@@ -1131,7 +1131,7 @@ def show_reports():
         col_btn1, col_btn2, col_btn3 = st.columns(3)
         
         with col_btn1:
-            if st.button("📥 Download CSV", width="stretch", key="download_csv"):
+            if st.button("📥 Download CSV", use_container_width=True, key="download_csv"):
                 csv = export_df.to_csv(index=False)
                 st.download_button(
                     label="⬇️ Click to Download",
@@ -1142,7 +1142,7 @@ def show_reports():
                 )
         
         with col_btn2:
-            if st.button("📊 Download Excel", width="stretch", key="download_excel"):
+            if st.button("📊 Download Excel", use_container_width=True, key="download_excel"):
                 buffer = io.BytesIO()
                 with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
                     export_df.to_excel(writer, index=False, sheet_name='Report')
@@ -1156,7 +1156,7 @@ def show_reports():
                 )
         
         with col_btn3:
-            if st.button("📄 Download PDF", width="stretch", key="download_pdf"):
+            if st.button("📄 Download PDF", use_container_width=True, key="download_pdf"):
                 st.info("PDF generation would be implemented with reportlab")
 
 # MODULE 6: User Management Interface (Admin Only)
@@ -1890,3 +1890,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

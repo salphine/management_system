@@ -1,4 +1,4 @@
-import streamlit as st
+﻿import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -1890,10 +1890,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-<<<<<<< HEAD
-=======
 
 
 
-# Last deployment: 2026-02-09 11:05:06
->>>>>>> 72d9e35821b79c4df9c95267f669817d8cb00b18

@@ -1,10 +1,11 @@
 import streamlit as st
 import hashlib
-from database import Database
+
 
 class Authentication:
     def __init__(self):
-        self.db = Database()
+    from database import Database
+    self.db = Database()
         
     def hash_password(self, password):
         """Simple password hashing"""
@@ -73,3 +74,5 @@ class Authentication:
         if not self.check_auth():
             st.error("Please login to access this page")
             st.stop()
+
+

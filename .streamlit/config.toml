@@ -1,8 +1,2 @@
 [server]
 maxUploadSize = 200
-
-# Add unique value to break cache
-<<<<<<< HEAD
-=======
-cacheTimeout = 182
->>>>>>> 72d9e35821b79c4df9c95267f669817d8cb00b18
